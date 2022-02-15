@@ -52,6 +52,12 @@ public class CakeModel {
         cordString = "" + newX + "," + newY;
     }
 
+    /**
+     * this method draws the checker board where user touches
+     * @param canvas
+     * @param newX
+     * @param newY
+     */
     public void drawCheckeredBoard(Canvas canvas, int newX, int newY) {
         Paint red = new Paint();
         Paint green = new Paint();
