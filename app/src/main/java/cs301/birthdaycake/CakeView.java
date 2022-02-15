@@ -16,9 +16,7 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
-    Paint cordPaint = new Paint();
-    Paint checkerBoardRed = new Paint();
-    Paint checkerBoardGreen = new Paint();
+    Paint balloonPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -56,19 +54,16 @@ public class CakeView extends SurfaceView {
         cakePaint.setStyle(Paint.Style.FILL);
         frostingPaint.setColor(0xFF69c420);  //not pale yellow
         frostingPaint.setStyle(Paint.Style.FILL);
-        candlePaint.setColor(0xFFDD1320);  //red
+        candlePaint.setColor(0xFFDD1320);  //lime green
         candlePaint.setStyle(Paint.Style.FILL);
-        outerFlamePaint.setColor(0xFF44F8F8);  //cyan
+        outerFlamePaint.setColor(0xFF44F8F8);  //gold yellow
         outerFlamePaint.setStyle(Paint.Style.FILL);
-        innerFlamePaint.setColor(0xFFA5F8F8);  //white cyanish
+        innerFlamePaint.setColor(0xFFA5F8F8);  //orange
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
-        cordPaint.setColor(Color.RED);
-        cordPaint.setStyle(Paint.Style.FILL);
-        cordPaint.setTextSize(50.0f);
-        checkerBoardRed.setColor(0xFFF46040);
-        checkerBoardGreen.setColor(0xFF69C420);
+        balloonPaint.setColor(Color.BLUE);
+        balloonPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -95,7 +90,10 @@ public class CakeView extends SurfaceView {
         float wickLeft = left + candleWidth/2 - wickWidth/2;
         float wickTop = bottom - wickHeight - candleHeight;
         canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
+    }
 
+    public void drawBalloon(Canvas canvas, int x, int y) {
+        canvas.drawOval(x - 20, y - 40, x + 20, y + 40, balloonPaint);
     }
 
     /**
@@ -149,16 +147,12 @@ public class CakeView extends SurfaceView {
                        cakeLeft + i*cakeWidth/(num + 1) - i*candleWidth/(num + 1), cakeTop);
            }
        }
-       if (cakeModel.xCord >= 0) {
-            canvas.drawText(cakeModel.cordString, 1750.0f, 680.0f, cordPaint);
-            //draws the checkered board where user touches.
-            cakeModel.drawCheckeredBoard(canvas, cakeModel.xCord, cakeModel.yCord);
+
+       if ((cakeModel.xCord <= 0) && (cakeModel.yCord <= 0)) {
+           drawBalloon(canvas, cakeModel.xCord, cakeModel.yCord);
        }
 
-
     }//onDraw
-
-
 
     public CakeModel getCakeModel(){
      return cakeModel;
