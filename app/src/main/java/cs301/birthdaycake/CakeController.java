@@ -57,15 +57,12 @@ private CakeModel cakeModel;
 
     }
 
-
-
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         //set the coordinates
         int x = (int)motionEvent.getX();
         int y = (int)motionEvent.getY();
         cakeModel.setCords(x, y);
-
 
         //print the thing
         cakeView.invalidate();
