@@ -149,6 +149,7 @@ public class CakeView extends SurfaceView {
        }
        if (cakeModel.xCord >= 0) {
             canvas.drawText(cakeModel.cordString, 1750.0f, 680.0f, cordPaint);
+            //draws the checkered board where user touches.
             cakeModel.drawCheckeredBoard(canvas, cakeModel.xCord, cakeModel.yCord);
        }
 
