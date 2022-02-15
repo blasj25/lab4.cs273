@@ -31,4 +31,13 @@ public class CakeModel {
     public void setFrosting(boolean newFrosted){
         isFrosting = newFrosted;
     }
+
+    public int xCord = -1;
+    public int yCord = -1;
+    public String cordString;
+    public void setCords(int newX, int newY) {
+        xCord = newX;
+        yCord = newY;
+        cordString = "" + newX + "," + newY;
+    }
 }
