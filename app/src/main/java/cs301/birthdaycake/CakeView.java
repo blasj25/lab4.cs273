@@ -146,7 +146,7 @@ public class CakeView extends SurfaceView {
            }
        }
        if (cakeModel.xCord >= 0) {
-            canvas.drawText(cakeModel.cordString, 1750.0f, 700.0f, cordPaint);
+            canvas.drawText(cakeModel.cordString, 1750.0f, 680.0f, cordPaint);
        }
     }//onDraw
 
