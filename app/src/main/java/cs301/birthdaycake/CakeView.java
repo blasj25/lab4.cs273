@@ -38,8 +38,6 @@ public class CakeView extends SurfaceView {
     public static final float innerFlameRadius = 15.0f;
     private CakeModel cakeModel;
 
-
-
     /**
      * ctor must be overridden here as per standard Java inheritance practice.  We need it
      * anyway to initialize the member variables
@@ -54,7 +52,7 @@ public class CakeView extends SurfaceView {
         //Setup our palette
         cakePaint.setColor(0xFF00F536);  //not violet-red
         cakePaint.setStyle(Paint.Style.FILL);
-        frostingPaint.setColor(0xFF69c420);  //not pale yellow
+        frostingPaint.setColor(0xFF69c420);  //not pale-yellow
         frostingPaint.setStyle(Paint.Style.FILL);
         candlePaint.setColor(0xFFDD1320);  //red
         candlePaint.setStyle(Paint.Style.FILL);

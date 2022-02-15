@@ -52,6 +52,7 @@ public class CakeModel {
         cordString = "" + newX + "," + newY;
     }
 
+    //draws a red/green checkered block centered on param x/y values
     public void drawCheckeredBoard(Canvas canvas, int newX, int newY) {
         Paint red = new Paint();
         Paint green = new Paint();
@@ -59,19 +60,20 @@ public class CakeModel {
         red.setColor(Color.RED);
         green.setColor(Color.GREEN);
 
+        //creates a effective 2 by 2 matrix for each box
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
                 if (i == 0) {
                     if (j == 0) {
-                        canvas.drawRect(newX + 15 * i, newY + 15 * j, newX + 15 + (j * 15), newY + 15 + (j * 15), red);
+                        canvas.drawRect(newX - (15), newY - (15), newX, newY, red);//draws top-let red square
                     } else {
-                        canvas.drawRect(newX + 15 * i, newY + 15 * j, newX + 15 + (j * 15), newY + 15 + (j * 15), green);
+                        canvas.drawRect(newX + (15), newY - (15), newX, newY, green);//draws top-right green square
                     }
                 } else {
                     if (j == 0) {
-                        canvas.drawRect(newX + 15 * i, newY + 15 * j, newX + 15 + (i * 15), newY + 15 + (j * 15), green);
+                        canvas.drawRect(newX, newY, newX - 15, newY + 15, green);//draws bottom-let green square
                     } else {
-                        canvas.drawRect(newX + 15 * i, newY + 15 * j, newX + 15 + (j * 15), newY + 15 + (j * 15), red);
+                        canvas.drawRect(newX, newY, newX + 15, newY + 15, red);//draws bottom-right red square
                     }
                 }
             }

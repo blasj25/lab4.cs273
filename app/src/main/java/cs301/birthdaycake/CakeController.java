@@ -19,7 +19,6 @@ private CakeModel cakeModel;
         cakeModel = cakeView.getCakeModel();
     }
 
-
     @Override
     public void onClick(View view) {
         Log.d("Blow Out", "CLICK");
