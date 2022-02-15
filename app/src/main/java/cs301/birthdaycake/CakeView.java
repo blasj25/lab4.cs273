@@ -19,6 +19,7 @@ public class CakeView extends SurfaceView {
     Paint cordPaint = new Paint();
     Paint checkerBoardRed = new Paint();
     Paint checkerBoardGreen = new Paint();
+    Paint balloonPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -67,6 +68,8 @@ public class CakeView extends SurfaceView {
         cordPaint.setTextSize(50.0f);
         checkerBoardRed.setColor(0xFFF46040);
         checkerBoardGreen.setColor(0xFF69C420);
+        balloonPaint.setColor(Color.BLUE);
+        balloonPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -93,7 +96,10 @@ public class CakeView extends SurfaceView {
         float wickLeft = left + candleWidth/2 - wickWidth/2;
         float wickTop = bottom - wickHeight - candleHeight;
         canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
+    }
 
+    public void drawBalloons(Canvas canvas, int x, int y) {
+        canvas.drawOval(x - 20, y - 40, x + 20, y + 40, balloonPaint);
     }
 
     /**
@@ -149,8 +155,10 @@ public class CakeView extends SurfaceView {
        }
        if (cakeModel.xCord >= 0) {
             canvas.drawText(cakeModel.cordString, 1750.0f, 680.0f, cordPaint);
+            drawBalloons(canvas, cakeModel.xCord, cakeModel.yCord);
             //draws the checkered board where user touches
             cakeModel.drawCheckeredBoard(canvas, cakeModel.xCord, cakeModel.yCord);
+
        }
 
     }//onDraw
